@@ -1,18 +1,23 @@
 <template>
   <section class="container">
+    <card></card>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+  import card from '~/components/card.vue'
 
-export default {
-  components: {
-    Logo
+  export default {
+    components: {
+      card
+    }
   }
-}
 </script>
 
-<style>
-
+<style lang="scss">
+  @import "../assets/abstracts/mixins";
+  @import "../assets/abstracts/variables";
+  @import "../assets/base/base";
+  @import "../assets/base/helpers";
+  @import "../assets/base/typography";
 </style>
