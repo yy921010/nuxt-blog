@@ -8,6 +8,7 @@
   import card from '~/components/card.vue'
 
   export default {
+    layout: 'main',
     components: {
       card
     }

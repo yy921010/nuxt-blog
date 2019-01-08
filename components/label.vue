@@ -19,25 +19,5 @@
 <style scoped lang="scss">
   @import "../assets/abstracts/mixins";
   @import "../assets/abstracts/variables";
-
-  .label {
-    padding: 0px 10px;
-    margin-bottom: 1rem;
-    display: inline-block;
-    line-height: 20px;
-    font-size: .75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 100px;
-    transition: all 0.2s ease;
-
-    &:focus,
-    &:hover {
-      color: $bg-color;
-      background-color: $primary;
-      border: 2px solid $primary;
-    }
-  }
+  @import "../assets/components/label";
 </style>
