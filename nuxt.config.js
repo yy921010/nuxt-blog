@@ -46,6 +46,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'http://127.0.0.1:7001'
   },
 
   /*
@@ -57,6 +58,10 @@ module.exports = {
     */
     extend(config, ctx) {
 
-    }
+    },
+    vendor: ['axios']
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:7001'
   }
 }

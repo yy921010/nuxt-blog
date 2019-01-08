@@ -1,6 +1,9 @@
 export default {
   namespaced: true,
   state: {
-    title: 'dsadasd'
+    title: '',
+    data: '',
+    subtitle: '',
+    backgroundUrl: ''
   }
 }

@@ -23,9 +23,21 @@
       </div>
     </header>
     <div class="hero lazyloaded"
-         style="background-image: url()">
-      <div class="hero__wrap"><h1 class="hero__title">{{title}}</h1>
-        <p class="hero__meta">Modern Jekyll theme focused on speed performance &amp; SEO best practices</p></div>
+         :style="{'background-image':'url('+backgroundUrl+')'}">
+      <div class="hero__wrap">
+        <div class="hero__categories">
+
+        </div>
+        <h1 class="hero__title">{{title}}</h1>
+        <p class="hero__meta">
+          <span v-if="data !==''">
+            <time>{{data}}</time>
+          </span>
+          <span v-if="subtitle !== ''">
+            {{subtitle}}
+          </span>
+        </p>
+      </div>
     </div>
     <nuxt/>
   </div>
@@ -33,6 +45,7 @@
 
 <script>
   import { mapState } from 'vuex'
+  import vLabel from '../components/label'
 
   export default {
     data() {
@@ -53,15 +66,21 @@
         ]
       }
     },
+    components:{
+      vLabel
+    },
     computed: {
       ...mapState('title', {
-        title: s => s.title
+        title: s => s.title,
+        data: s => s.data,
+        subtitle: s => s.subtitle,
+        backgroundUrl: s => s.backgroundUrl
       })
     }
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "../assets/abstracts/mixins";
   @import "../assets/abstracts/variables";
   @import "../assets/layout/grid";
