@@ -16,8 +16,3 @@
   }
 </script>
 
-<style scoped lang="scss">
-  @import "../assets/abstracts/mixins";
-  @import "../assets/abstracts/variables";
-  @import "../assets/components/label";
-</style>

@@ -63,5 +63,19 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://127.0.0.1:7001'
+  },
+  router: {
+    routes: [
+      {
+        name: 'index',
+        path: '/',
+        component: 'pages/index.vue'
+      },
+      {
+        name: 'detail-id',
+        path: '/detail/:id?',
+        component: 'pages/detail/_id.vue'
+      }
+    ]
   }
 }

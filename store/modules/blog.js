@@ -5,6 +5,14 @@ export default {
   },
   mutations: {
     setBlogs(state, blogs) {
+      blogs.forEach((item) => {
+        item.tags = item.tags.map(tag => {
+          return {
+            title: tag,
+            url: tag
+          }
+        })
+      })
       state.blogs = blogs
     }
   },

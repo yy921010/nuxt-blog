@@ -1,8 +1,11 @@
 <template>
   <main class="site__content">
-    <section class="container">
-      <div class="post-list" v-if="blogs.length>0">
-        <card v-for="(blog,index) in blogs" :key="index" :blogCard="blog" :labels="blog.tags"></card>
+    <section class="blog">
+      <div class="container">
+        <div class="post-list" v-if="blogs.length>0">
+          <card v-for="(blog,index) in blogs" :key="index" :blogCard="blog" :labels="blog.tags"
+                @onDetail="showDetail"></card>
+        </div>
       </div>
     </section>
   </main>
@@ -25,14 +28,15 @@
 
     async fetch({ store, app }) {
       store.dispatch('blog/getBlog', { $axios: app.$axios })
+    },
+    methods: {
+      showDetail(blog) {
+        this.$router.push({
+          name: 'detail'
+        })
+        console.log(blog)
+      }
     }
   }
 </script>
 
-<style lang="scss">
-  @import "../assets/abstracts/mixins";
-  @import "../assets/abstracts/variables";
-  @import "../assets/base/base";
-  @import "../assets/base/helpers";
-  @import "../assets/base/typography";
-</style>

@@ -1,90 +1,63 @@
 <template>
   <div>
-    <header class="header">
-      <div class="container">
-        <div class="header__inner">
-          <a class="header__logo">
-            <div class="header__logo--container">
-            </div>
-          </a>
-          <nav class="header__links">
-            <div class="container header__links-wrapper">
-              <a class="header__link" v-for="(menu,index) in menus" :key="index" :href="menu.url">
-                <span>{{menu.title}}</span>
-              </a>
-            </div>
-          </nav>
-          <div class="header__toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="hero lazyloaded"
-         :style="{'background-image':'url('+backgroundUrl+')'}">
-      <div class="hero__wrap">
-        <div class="hero__categories">
-
-        </div>
-        <h1 class="hero__title">{{title}}</h1>
-        <p class="hero__meta">
-          <span v-if="data !==''">
-            <time>{{data}}</time>
-          </span>
-          <span v-if="subtitle !== ''">
-            {{subtitle}}
-          </span>
-        </p>
-      </div>
-    </div>
+    <vHeader></vHeader>
     <nuxt/>
+    <vFooter></vFooter>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
   import vLabel from '../components/label'
+  import vFooter from '../layouts/footer'
+  import vHeader from '../layouts/header'
 
   export default {
-    data() {
-      return {
-        menus: [
-          {
-            url: '',
-            title: 'Home'
-          },
-          {
-            url: '',
-            title: 'About'
-          },
-          {
-            url: '',
-            title: 'Contact'
-          }
-        ]
-      }
-    },
-    components:{
-      vLabel
-    },
-    computed: {
-      ...mapState('title', {
-        title: s => s.title,
-        data: s => s.data,
-        subtitle: s => s.subtitle,
-        backgroundUrl: s => s.backgroundUrl
-      })
+    components: {
+      vLabel,
+      vFooter,
+      vHeader
     }
   }
 </script>
 
 <style lang="scss">
-  @import "../assets/abstracts/mixins";
-  @import "../assets/abstracts/variables";
-  @import "../assets/layout/grid";
-  @import "../assets/layout/nav";
-  @import "../assets/pages/page";
+  @charset "UTF-8";
+
+  // 1. Configuration and helpers
+  @import
+  "../assets/abstracts/variables",
+  "../assets/abstracts/mixins";
+
+  // 2. Vendors
+  @import
+  "../assets/vendor/normalize";
+
+  // 3. Base
+  @import
+  "../assets/base/base",
+  "../assets/base/typography",
+  "../assets/base/helpers";
+
+  // 4. Layout
+  @import
+  "../assets/layout/grid",
+  "../assets/layout/nav",
+  "../assets/layout/footer";
+
+  // 5. Components
+  @import
+  "../assets/components/btn",
+  "../assets/components/card",
+  "../assets/components/label",
+  "../assets/components/pagination",
+  "../assets/components/form",
+  "../assets/components/modal",
+  "../assets/components/table",
+  "../assets/components/syntax";
+
+  // 6. Page-specific styles
+  @import
+  "../assets/pages/page",
+  "../assets/pages/post";
 
 </style>

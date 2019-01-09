@@ -1,5 +1,5 @@
 <template>
-  <div class="post-card">
+  <div class="post-card" @click="showMore(blogCard)">
     <span class="post-card__label" v-for="(label,index) in labels" :key="index" v-if="labels.length>0">
       <v-label :href="label.url">{{label.title}}</v-label>
     </span>
@@ -51,12 +51,12 @@
           return []
         }
       }
+    },
+    methods: {
+      showMore(blogCard) {
+        this.$emit('onDetail', blogCard)
+      }
     }
   }
 </script>
 
-<style scoped lang="scss">
-  @import "../assets/abstracts/mixins";
-  @import "../assets/abstracts/variables";
-  @import "../assets/components/card";
-</style>
