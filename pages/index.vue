@@ -31,10 +31,7 @@
     },
     methods: {
       showDetail(blog) {
-        this.$router.push({
-          name: 'detail'
-        })
-        console.log(blog)
+        this.$router.push(`/detail/${blog._id}`)
       }
     }
   }

@@ -8,8 +8,8 @@
   export default {
     name: 'blogId',
     layout: 'main',
-    fetch(){
-
+    fetch({params}){
+      console.log(params)
     }
   }
 </script>
