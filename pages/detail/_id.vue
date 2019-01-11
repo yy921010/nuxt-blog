@@ -1,15 +1,15 @@
 <template>
   <article class="post-content">
-    dasddsa
+    11111111111111
   </article>
 </template>
 
 <script>
+
   export default {
     name: 'blogId',
     layout: 'main',
     fetch({params}){
-      console.log(params)
     }
   }
 </script>

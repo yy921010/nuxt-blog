@@ -32,7 +32,9 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [
+    '~/plugins/vue-markdown'
+  ],
 
   /*
   ** Nuxt.js modules
@@ -59,7 +61,18 @@ module.exports = {
     extend(config, ctx) {
 
     },
-    vendor: ['axios']
+    vendor: [
+      'axios',
+      'dayjs',
+      'markdown-it',
+      'markdown-it-abbr',
+      'markdown-it-emoji',
+      'markdown-it-footnote',
+      'markdown-it-ins',
+      'markdown-it-sub',
+      'markdown-it-sup',
+      'highlightjs'
+    ]
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://127.0.0.1:7001'
