@@ -10,6 +10,7 @@ import mark from 'markdown-it-mark'
 import toc from 'markdown-it-toc-and-anchor'
 import katex from 'markdown-it-katex'
 import tasklists from 'markdown-it-task-lists'
+import hljs from 'highlightjs'
 import 'highlightjs/styles/androidstudio.css'
 
 export default {
@@ -165,8 +166,20 @@ export default {
       linkify: this.linkify,
       typographer: this.typographer,
       langPrefix: this.langPrefix,
-      quotes: this.quotes
+      quotes: this.quotes,
+      highlight(str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return '<pre class="hljs"><code>' +
+              hljs.highlight(lang, str, true).value +
+              '</code></pre>'
+          } catch (__) {
+          }
+          return '<pre class="hljs"><code>' + this.md.utils.escapeHtml(str) + '</code></pre>'
+        }
+      }
     })
+
     this.md.renderer.rules.table_open = () => `<table class="${this.tableClass}">\n`
     let defaultLinkRenderer = this.md.renderer.rules.link_open ||
       function(tokens, idx, options, env, self) {
