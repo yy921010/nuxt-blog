@@ -9,9 +9,10 @@
           </a>
           <nav class="header__links">
             <div class="container header__links-wrapper">
-              <a class="header__link" v-for="(menu,index) in menus" :key="index" :href="menu.url">
+              <nuxt-link class="header__link" v-for="(menu,index) in menus" :key="index" :href="menu.url"
+                         :to="menu.url">
                 <span>{{menu.title}}</span>
-              </a>
+              </nuxt-link>
             </div>
           </nav>
           <div class="header__toggle">
@@ -26,7 +27,9 @@
          :style="{'background-image':'url('+backgroundUrl+')'}">
       <div class="hero__wrap">
         <div class="hero__categories">
-
+          <vLabel v-for="(label,index) in labels" :key="index" :href="label.url" v-if="labels && labels.length>0">
+            {{label.title}}
+          </vLabel>
         </div>
         <h1 class="hero__title">{{title}}</h1>
         <p class="hero__meta">
@@ -44,32 +47,20 @@
 
 <script>
   import { mapState } from 'vuex'
+  import vLabel from '~/components/label.vue'
 
   export default {
     name: 'vHeader',
-    data() {
-      return {
-        menus: [
-          {
-            url: '',
-            title: 'Home'
-          },
-          {
-            url: '',
-            title: 'About'
-          },
-          {
-            url: '',
-            title: 'Contact'
-          }
-        ]
-      }
+    components: {
+      vLabel
     },
     computed: {
       ...mapState('title', {
+        menus: s => s.menus,
         title: s => s.title,
         data: s => s.data,
         subtitle: s => s.subtitle,
+        labels: s => s.labels,
         backgroundUrl: s => s.backgroundUrl
       })
     }

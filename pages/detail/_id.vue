@@ -1,15 +1,30 @@
 <template>
   <article class="post-content">
-    11111111111111
+    <vue-markdown :toc="true">{{blog.content}}</vue-markdown>
   </article>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
+  import 'highlightjs/styles/androidstudio.css'
 
   export default {
-    name: 'blogId',
+    name: 'vDetail',
     layout: 'main',
-    fetch({params}){
+    computed: {
+      ...mapState('blog', {
+        blog: s => s.currentBlog
+      })
+    },
+    methods: {
+      ...mapActions('blog', {
+        getBlogById: 'getBlogById'
+      })
+    },
+    fetch({ store, params: { id }, app }) {
+      store.dispatch('blog/getBlogById', {
+        id, store, $axios: app.$axios
+      })
     }
   }
 </script>

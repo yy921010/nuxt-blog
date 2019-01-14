@@ -1,7 +1,8 @@
 <template>
   <div class="post-card" @click="showMore(blogCard)">
-    <span class="post-card__label" v-for="(label,index) in labels" :key="index" v-if="labels.length>0">
-      <v-label :href="label.url">{{label.title}}</v-label>
+    <span class="post-card__label">
+      <v-label :href="label.url" v-for="(label,index) in labels" :key="index"
+               v-if="labels.length>0">{{label.title}}</v-label>
     </span>
     <a :href="blogCard.url">
       <figure class="post-card__thumb">
@@ -16,7 +17,7 @@
       <div class="post-card__header">
         <h2>{{blogCard.title}}</h2>
         <span class="post-card__meta">
-          <time>{{blogCard.updateTime}}</time>
+          <time>{{blogCard.date}}</time>
         </span>
       </div>
       <p>{{blogCard.abstract}}</p>

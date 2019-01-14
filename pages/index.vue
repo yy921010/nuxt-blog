@@ -28,6 +28,11 @@
 
     async fetch({ store, app }) {
       store.dispatch('blog/getBlog', { $axios: app.$axios })
+      store.commit('title/setHeader', {
+        title: '23.9K | Vineo',
+        subtitle: '生活不止眼前的苟且，还有诗和远方的田野',
+        backgroundUrl: 'https://janczizikow.github.io//sleek/assets/img/posts/sleek_lg.jpg'
+      })
     },
     methods: {
       showDetail(blog) {
