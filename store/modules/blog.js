@@ -17,6 +17,7 @@ export default {
           }
         })
         item.date = dayjs(item.updateTime).format('MM月DD日, YYYY')
+        item.thumbnail = 'http://127.0.0.1:7001/public/upload/' + item.thumbnail
       })
       state.blogs = blogs
     },
@@ -54,27 +55,14 @@ export default {
       })
       store.commit('title/setHeader', {
         title: data.title,
-        subtitle: dayjs(data.updateTime).format('YYYY-MM-DD HH:mm:ss')
+        subtitle: dayjs(data.updateTime).format('YYYY-MM-DD HH:mm:ss'),
+        backgroundUrl: 'http://127.0.0.1:7001/public/upload/' + data.thumbnail
       })
       commit('setCurrentBlog', data)
     },
 
     async getBlogById({ state, commit, dispatch }, { $axios, id, store }) {
-      let currentBlog
-      if (state.blogs !== '') {
-        currentBlog = state.blogs.find(item => item._id === id)
-        if (currentBlog) {
-          store.commit('title/setHeader', {
-            title: currentBlog.title,
-            subtitle: currentBlog.updateTime
-          })
-          commit('setCurrentBlog', currentBlog)
-        } else {
-          dispatch('blogById', { $axios, id, store })
-        }
-      } else {
-        dispatch('blogById', { $axios, id, store })
-      }
+      dispatch('blogById', { $axios, id, store })
     }
   }
 }

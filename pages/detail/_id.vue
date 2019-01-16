@@ -1,6 +1,6 @@
 <template>
   <article class="post-content">
-    <vue-markdown :toc="true">{{blog.content}}</vue-markdown>
+    <vue-markdown>{{blog.content}}</vue-markdown>
   </article>
 </template>
 

@@ -6,8 +6,8 @@
     </span>
     <a :href="blogCard.url">
       <figure class="post-card__thumb">
-        <img :src="blogCard.cover"
-             class="blur lazyloaded" :alt="blogCard.cover">
+        <img :src="blogCard.thumbnail"
+             class="blur lazyloaded" :alt="blogCard.thumbnail">
         <noscript>
           <img :src="blogCard.cover"
                :alt="blogCard.cover"></noscript>
